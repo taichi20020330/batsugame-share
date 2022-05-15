@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "829614774708",
+    "project_id": "batsugame-share",
+    "storage_bucket": "batsugame-share.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:829614774708:android:e0b5327c85ed7ab4fabae1",
+        "android_client_info": {
+          "package_name": "com.example.batsugame_share"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "829614774708-l4prba28picmqm2q2k6gm8rj72l9bhll.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_4J6cixN7W-knircWioCKhOj2UONSkBg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "829614774708-l4prba28picmqm2q2k6gm8rj72l9bhll.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "829614774708-pcnm4hnce8vmar7pn35gefo2c5omiimf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.batsugameShare"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
