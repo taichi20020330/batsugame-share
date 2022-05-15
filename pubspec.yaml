@@ -1,0 +1,54 @@
+name: batsugame_share
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+  firebase_core: ^1.15.0
+  cloud_firestore: ^3.1.13
+  flutter_fortune_wheel: ^1.2.0
+
+  cupertino_icons: ^1.0.2
+  provider: ^6.0.1
+  flutter_slidable: ^0.6.0
+  audioplayers: ^0.20.1
+  shared_preferences: ^2.0.13
+  multi_select_flutter: ^4.0.0
+  firestore_search: ^0.1.9
+  admob_flutter: ^2.0.0
+  flutter_launcher_icons: ^0.9.2
+  url_launcher: ^6.1.0
+  font_awesome_flutter: ^10.1.0
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^1.0.0
+  mobx_codegen:
+  build_runner:
+
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/drumroll.mp3
+    - assets/drumroll_end.mp3
+    - nakamura.JPG
+    - momiji.JPG
+
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/flutter-icon.png" # pngファイルを配置し、パスを指定
