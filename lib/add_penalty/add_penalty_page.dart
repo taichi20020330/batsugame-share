@@ -1,43 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'add_penalty_model.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
 
-class Tag {
-  final int id;
-  final String name;
-
-  Tag({
-    required this.id,
-    required this.name,
-  });
-}
-
-class AddPenaltyPage extends StatelessWidget {
-  static final List<Tag> _tag = [
-    Tag(id: 1, name: "外でやる"),
-    Tag(id: 2, name: "家でやる"),
-    Tag(id: 3, name: "男性向け"),
-    Tag(id: 4, name: "女性向け"),
-    Tag(id: 5, name: "痛い"),
-    Tag(id: 6, name: "体を動かす"),
-    Tag(id: 7, name: "自分と向き合う"),
-    Tag(id: 8, name: "特定の人"),
-    Tag(id: 9, name: "笑いをとれる"),
-    Tag(id: 10, name: "恥ずかしい"),
-    Tag(id: 11, name: "めんどくさい"),
-    Tag(id: 12, name: "お金を使う"),
-    Tag(id: 13, name: "SNSを使う"),
-    Tag(id: 14, name: "コンビニを使う"),
-    Tag(id: 15, name: "ずっと続く"),
-    Tag(id: 16, name: "恋愛"),
-
+class AddPenaltyPage extends StatefulWidget {
+  static final List<String> _tags= [
+    "家でやる",
+    "外でやる",
+    "男性向け",
+    "女性向け",
+    "体を動かす",
+    "SNSを使う",
+    "コンビニを使う",
+    "お金を使う",
+    "特定の人",
+    "自分と向き合う",
+    "笑いを取れる",
+    "痛い",
+    "めんどくさい",
+    "恥ずかしい",
+    "恋愛",
   ];
 
-  final _items = _tag
-      .map((tag) => MultiSelectItem<Tag>(tag, tag.name))
+  @override
+  State<AddPenaltyPage> createState() => _AddPenaltyPageState();
+}
+
+class _AddPenaltyPageState extends State<AddPenaltyPage> {
+  final _items = AddPenaltyPage._tags
+      .map((tag) => MultiSelectItem<String>(tag, tag.toString()))
       .toList();
-  List<Tag> _selectedTags = [];
+
+  List<String> _selectedTags = [];
+  Color iconColor0 = Colors.black;
+  Color iconColor1 = Colors.grey;
+  Color iconColor2 = Colors.grey;
+  int level = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +44,7 @@ class AddPenaltyPage extends StatelessWidget {
       create: (_) => AddPenaltyModel(),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text( '罰ゲームの追加'),
+          title: const Text( 'みんなの罰ゲーム追加'),
           backgroundColor: Colors.green[800],
         ),
         body: Padding(
@@ -86,17 +85,34 @@ class AddPenaltyPage extends StatelessWidget {
                         ),
                       ),
                       onConfirm: (results) {
-                        final resultTags = results.cast<Tag>();
+                        final resultTags = results.cast<String>();
                         _selectedTags = resultTags;
                         model.tags = _selectedTags;
                       },
                       chipDisplay: MultiSelectChipDisplay(
                       ),
                     ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20.0, bottom: 10),
+                      child: Row(
+                        children: [
+                          const Text(
+                            "キツさ",
+                            style: TextStyle(
+                                fontSize: 18,
+                            ),
+                          ),
+                          const Spacer(),
+                          skullIcon(0, iconColor0),
+                          skullIcon(1, iconColor1),
+                          skullIcon(2, iconColor2),
+                        ],
+                      ),
+                    ),
                     const SizedBox(height:8,),
                     ElevatedButton(onPressed: () async{
-                      //追加の処理
                       try{
+                        model.level = level;
                         await model.addPenalty();
                         Navigator.of(context).pop(true);
                       }catch(e){
@@ -108,9 +124,46 @@ class AddPenaltyPage extends StatelessWidget {
                     }, child: const Text('追加する')),
                   ],
                   );
+
           }),
         ),
       ),
     );
+
+  }
+
+  Widget skullIcon(int i, Color funcIconColor){
+    return IconButton(
+      icon:   Icon(
+        FontAwesomeIcons.skull,
+        size:30,
+        color: funcIconColor,
+      ),
+      onPressed: () {
+        setState(() {
+          switch(i){
+            case 0:
+              iconColor0 = Colors.black87;
+              iconColor1 = Colors.grey;
+              iconColor2 = Colors.grey;
+              level = 1;
+              break;
+            case 1:
+              iconColor0 = Colors.black87;
+              iconColor1 = Colors.black87;
+              iconColor2 = Colors.grey;
+              level = 2;
+              break;
+            case 2:
+              iconColor0 = Colors.black87;
+              iconColor1 = Colors.black87;
+              iconColor2 = Colors.black87;
+              level = 3;
+              break;
+          }
+        });
+      },
+    );
   }
 }
+

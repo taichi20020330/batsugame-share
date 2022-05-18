@@ -35,40 +35,40 @@ class settingsPage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8.0),
                 child:  Image.asset('nakamura.JPG',width: 300,),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top:8.0, bottom: 8.0),
+              const Padding(
+                padding: EdgeInsets.only(top:8.0, bottom: 8.0),
                 child: Text("中村太一",style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
                 ),),
               ),
-              Text("香川出身の大学生。照り焼きチキンを作ろうとしたら、レンジが発火したことがある。"),
+              const Text("香川出身の大学生。照り焼きチキンを作ろうとしたら、レンジが発火したことがある。"),
               Padding(
                 padding: const EdgeInsets.only(top:30),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     IconButton(
-                      icon: Icon(FontAwesomeIcons.twitter),
+                      icon: const Icon(FontAwesomeIcons.twitter),
                       onPressed: _twitterUrl
                     ),
                     IconButton(
-                      icon: Icon(FontAwesomeIcons.instagram),
+                      icon: const Icon(FontAwesomeIcons.instagram),
                       onPressed: _instaUrl
                     ),
                     IconButton(
-                      icon:  Icon(FontAwesomeIcons.circleInfo),
+                      icon:  const Icon(FontAwesomeIcons.circleInfo),
                       onPressed: _policyUrl
                     ),
 
                     IconButton(
-                      icon:  Icon(FontAwesomeIcons.paw),
+                      icon:  const Icon(FontAwesomeIcons.paw),
                       onPressed: () {
                         showDialog(
                           context: context,
                           builder: (_) {
                             return AlertDialog(
-                              title:Text('もみじ'),
+                              title:const Text('もみじ'),
                               content: Image.asset('momiji.JPG',width: 300,),
                             );
                           },
